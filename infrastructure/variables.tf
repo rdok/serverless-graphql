@@ -8,6 +8,6 @@ variable "environment" {
 }
 
 variable "name" {
-  default = "aws-sam-graphql-template"
+  default = "aws-sam-graphql"
   type        = string
 }

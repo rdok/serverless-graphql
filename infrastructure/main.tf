@@ -7,9 +7,9 @@ terraform {
   required_version = ">= 0.13, < 0.14"
   backend "remote" {
     hostname = "app.terraform.io"
-    organization = "reliable"
+    organization = "rdok"
     workspaces {
-      prefix = "aws-sam-graphql-template-"
+      prefix = "aws-sam-graphql-"
     }
   }
 }
