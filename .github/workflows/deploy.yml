@@ -1,0 +1,41 @@
+name: Deploy
+env:
+  NAME: aws-sam-graphql-template
+  ENVIRONMENT: staging
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_REGION: eu-west-1
+on:
+  push:
+    branches: master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - name: Run tests
+        run: |
+          echo 'TODO: enable this when tests fixed'
+      - name: Prepare build for deployment
+        run: |
+          npm prune --production
+          rm -rf tests
+          ls -lat
+      - name: Package build
+        run: |
+          sam package \
+            --s3-bucket $NAME \
+            --s3-prefix "${ENVIRONMENT}/packages" \
+            --output-template-file packaged.yml
+      - name: Deploy build
+        run: |
+          sam deploy \
+            --s3-bucket $NAME \
+            --s3-prefix "${ENVIRONMENT}/deployments" \
+            --template-file packaged.yml \
+            --stack-name $STACK_NAME \
+            --capabilities CAPABILITY_IAM \
+            --region $AWS_REGION
+        env:
+          STACK_NAME: ${{ format('{0}-{1}', env.NAME, env.ENVIRONMENT) }}

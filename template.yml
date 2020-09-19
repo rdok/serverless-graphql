@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  aws-sam-graphql-template
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  apiGatewayApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: 'Prod'
+      Cors: "'*'"
+  graphqlFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/graphql.graphqlHandler
+      Runtime: nodejs12.x
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Method: ANY
+            Path: /graphql
+            RestApiId:
+              Ref: apiGatewayApi
+Outputs:
+  WebEndpoint:
+    Description: "API Gateway endpoint URL"
+    Value: !Sub "https://${apiGatewayApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"

@@ -1,0 +1,4 @@
+{
+  "httpMethod": "POST",
+  "body": "{\"operationName\":null,\"variables\":{},\"query\":\"{\\n  hello\\n}\\n\"}"
+}
