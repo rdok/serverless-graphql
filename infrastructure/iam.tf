@@ -53,6 +53,7 @@ data "aws_iam_policy_document" "github-cd-pipeline" {
       "lambda:GetFunction",
       "lambda:AddPermission",
       "lambda:RemovePermission",
+      "lambda:UpdateFunctionCode",
     ]
     resources = [
       "arn:aws:lambda:${var.aws_region}:*:function:${var.name}-${var.environment}-*",
