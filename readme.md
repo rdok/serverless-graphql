@@ -10,8 +10,12 @@ Finally, it automates the deployment using GitHub actions.
 See `.github/workflows/deploy.yml`
 
 ##### Notes
-- You can get the AWS secrets for the GitHub action secrets from the IAM user that terraform creates.
+1. Use Terraform cloud to run the infrastructure. 
+    - Create a `aws-sam-graphql-template-staging` and `aws-sam-graphql-template-prod`
+        - Specify `infrastructure` working directory
+        - Create `environment` terraform variable with `staging` value
+        - Add `AWS_ACCESS_KEY_ID` and  `AWS_SECRET_ACCESS_KEY` environment variables. Preferably with admin privelges :/
+2. You can get the AWS secrets for the GitHub action secrets from the IAM user that terraform created from previous step.
     - This is the only step not automated; partially due to security reasons and partly, just don't know a cheap way to do it.
-- Use Terraform cloud to run the infrastructure. 
     - Alternatively, you'll have to modify `infrastructe` folder to run locally.
     - Or create these resources with some other approach.
