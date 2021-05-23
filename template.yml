@@ -1,18 +1,17 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: >-
-  aws-sam-graphql-template
+Description: Creates Apollo GraphQL Server through API Gateway & Lambda.
 Transform: AWS::Serverless-2016-10-31
 Resources:
-  apiGatewayApi:
+  ApiGatewayApi:
     Type: AWS::Serverless::Api
     Properties:
-      StageName: 'Prod'
+      StageName: "Prod"
       Cors: "'*'"
-  graphqlFunction:
+  GraphqlFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: src/handlers/graphql.graphqlHandler
-      Runtime: nodejs12.x
+      Handler: src/main.graphqlHandler
+      Runtime: nodejs14.x
       Events:
         Api:
           Type: Api
@@ -20,7 +19,7 @@ Resources:
             Method: ANY
             Path: /graphql
             RestApiId:
-              Ref: apiGatewayApi
+              Ref: ApiGatewayApi
 Outputs:
   WebEndpoint:
     Description: "API Gateway endpoint URL"
