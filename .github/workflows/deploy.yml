@@ -38,7 +38,7 @@ jobs:
           fi
           echo ::set-output name=name::"${NAME}"
           echo ::set-output name=stack-name::"${ORG}-${ENVIRONMENT}-${NAME}"
-          echo ::set-output name=cicd-bucket::"${ORG}-${ENVIRONMENT}-cicd"
+          echo ::set-output name=cicd-bucket::"${ORG}-${ENVIRONMENT}-cicd-${AWS_DEFAULT_REGION}"
       - run: npm ci --frozen-lockfile
       - run: npm run test
       - name: Build
