@@ -23,4 +23,4 @@ Resources:
 Outputs:
   WebEndpoint:
     Description: "API Gateway endpoint URL"
-    Value: !Sub "https://${apiGatewayApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+    Value: !Sub "https://${ApiGatewayApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
