@@ -1,4 +1,4 @@
-name: Deploy
+name: 'Build & Deploy'
 env:
   ORG: rdok
   NAME: aws-sam-graphql
@@ -15,7 +15,7 @@ on:
         description: "Allowed values: prod, test"
         default: prod
 jobs:
-  deploy:
+  build-deploy:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
