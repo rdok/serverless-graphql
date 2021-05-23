@@ -1,7 +1,7 @@
-const lambda = require('../../../src/handlers/graphql.js');
+const lambda = require('../../src/main.js');
 
 describe('Test graphql handler', () => {
-  it('has correct structure', () => {
+  it('has expected structure', () => {
     expect(lambda).toHaveProperty('graphqlHandler');
     expect(lambda).toHaveProperty('handler');
   });
