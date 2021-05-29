@@ -1,6 +1,6 @@
 {
-    "name": "aws-sam-graphql-template",
-    "description": "aws-sam-graphql-template",
+    "name": "serverless-graphql",
+    "description": "Serverless GraphQL using Apollo.",
     "version": "1.0.0",
     "private": false,
     "dependencies": {
