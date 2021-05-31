@@ -1,6 +1,6 @@
 name: 'Build & Deploy'
 env:
-  ORG: rdok
+  ORG: rdokos
   NAME: serverless-graphql
   AWS_DEFAULT_REGION: eu-west-1
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
