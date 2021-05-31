@@ -19,4 +19,4 @@ See `Makefile` for additional commands.
 [test_site]: https://ekgkan90nf.execute-api.eu-west-1.amazonaws.com/Prod/graphql
 [prod_site_badge]: https://img.shields.io/badge/prod-blue?style=flat-square&logo=amazon-aws
 [prod_site]: https://7kjha4oyu1.execute-api.eu-west-1.amazonaws.com/Prod/graphql
-[design]: ./design.png
+[design]: ./design.webp
