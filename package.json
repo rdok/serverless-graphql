@@ -5,7 +5,7 @@
     "private": false,
     "dependencies": {
         "apollo-server-lambda": "^3.6.1",
-        "graphql": "^15.5.0"
+        "graphql": "^16.2.0"
     },
     "devDependencies": {
         "jest": "^24.7.1"
