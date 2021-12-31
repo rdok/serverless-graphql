@@ -11,7 +11,8 @@
         "jest": "^27.4.5"
     },
     "scripts": {
-        "test": "jest"
+        "test": "jest",
+        "test:watch": "jest --watch"
     },
     "engines": {
         "node": "14"

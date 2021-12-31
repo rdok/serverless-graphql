@@ -3,6 +3,8 @@ start: node_modules
 
 test: node_modules
 	npm run test
+test-watch: node_modules
+	npm run test:watch
 
 node_modules:
 	npm ci
