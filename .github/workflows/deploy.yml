@@ -25,6 +25,8 @@ jobs:
     concurrency: ${{ github.event.inputs.environment == '' && 'test' || github.event.inputs.environment }}
     steps:
       - uses: actions/checkout@v2
+      - name: Validate template
+        run: sam validate
       - uses: actions/setup-node@v2
         with: { node-version: '14' }
       - name: Prepare environment variables
@@ -50,10 +52,6 @@ jobs:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: ${{ runner.os }}-node-
-      - name: Install NPM packages
-        run: npm ci
-      - name: Validate template
-        run: sam validate
       - name: Build
         run: sam build
       - name: Deploy
