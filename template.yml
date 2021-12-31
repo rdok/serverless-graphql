@@ -10,7 +10,7 @@ Resources:
         AllowCredentials: true
         AllowHeaders: "'content-type'"
         AllowMethods: "'GET, OPTIONS, POST'"
-        AllowOrigin: "'studio.apollographql.com'"
+        AllowOrigin: "'https://studio.apollographql.com'"
 #        MaxAge: "'31536000'"
   GraphqlFunction:
     Type: AWS::Serverless::Function
