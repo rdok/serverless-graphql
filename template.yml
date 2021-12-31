@@ -1,6 +1,6 @@
-AWSTemplateFormatVersion: 2010-09-09
+AWSTemplateFormatVersion: "2010-09-09"
 Description: Creates Apollo GraphQL Server through API Gateway & Lambda.
-Transform: AWS::Serverless-2016-10-31
+Transform: "AWS::Serverless-2016-10-31"
 Resources:
   ApiGatewayApi:
     Type: AWS::Serverless::Api
@@ -8,7 +8,7 @@ Resources:
       StageName: "Prod"
       Cors:
         AllowCredentials: true
-        AllowHeaders: "'*'"
+        AllowHeaders: "'content-type'"
         AllowMethods: "'GET,OPTIONS,POST'"
         AllowOrigin: "'https://studio.apollographql.com'"
         MaxAge: 31536000
