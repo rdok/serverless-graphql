@@ -1,4 +1,4 @@
-name: 'Build & Deploy'
+name: Deploy
 env:
   ORG: rdokos
   NAME: serverless-graphql
@@ -7,7 +7,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   workflow_dispatch:
     inputs:
       environment:
@@ -15,13 +15,17 @@ on:
         description: "Allowed values: prod, test"
         default: prod
 jobs:
-  build-deploy:
-    runs-on: ubuntu-20.04
+  check:
+    uses: rdok/serverless-graphql/.github/workflows/check.yml@main
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.event.inputs.environment == '' && 'test' || github.event.inputs.environment }}
+    concurrency: ${{ github.event.inputs.environment == '' && 'test' || github.event.inputs.environment }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+        with: { node-version: '14' }
       - name: Prepare environment variables
         id: env
         env:
@@ -39,10 +43,9 @@ jobs:
           echo ::set-output name=name::"${NAME}"
           echo ::set-output name=stack-name::"${ORG}-${ENVIRONMENT}-${NAME}"
           echo ::set-output name=cicd-bucket::"${ORG}-${ENVIRONMENT}-cicd-${AWS_DEFAULT_REGION}"
-      - run: npm ci --frozen-lockfile
-      - run: npm run test
       - name: Build
         run: |
+          npm ci
           npm prune --production
           sam build
       - name: Deploy
