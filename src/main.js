@@ -37,16 +37,5 @@ const serverHandler = server.createHandler({
 });
 
 exports.graphqlHandler = (event, lambdaContext, callback) => {
-  const playgroundRequested = event.httpMethod === 'GET';
-
-  console.log('playgroundRequested', playgroundRequested);
-  if (!playgroundRequested) {
     return serverHandler(event, lambdaContext, callback);
-  }
-
-  return serverHandler(
-    { ...event, path: event.requestContext.path || event.path },
-    lambdaContext,
-    callback,
-  );
 };
