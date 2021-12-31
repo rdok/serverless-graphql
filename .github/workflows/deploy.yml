@@ -52,6 +52,7 @@ jobs:
           restore-keys: ${{ runner.os }}-node-
       - name: Build
         run: |
+          sam validate
           npm ci
           npm prune --production
           sam build

@@ -1,19 +1,10 @@
 name: Check
-env:
-  AWS_DEFAULT_REGION: eu-west-1
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 on:
   pull_request:
     branches: [ main ]
   workflow_call:
   workflow_dispatch:
 jobs:
-  validate-sam:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: sam validate
   test:
     runs-on: ubuntu-latest
     steps:
