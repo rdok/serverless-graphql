@@ -6,7 +6,12 @@ Resources:
     Type: AWS::Serverless::Api
     Properties:
       StageName: "Prod"
-      Cors: "'*'"
+      Cors:
+        AllowCredentials: true
+        AllowHeaders: "'*'"
+        AllowMethods: "'GET,OPTIONS,POST'"
+        AllowOrigin: "'https://studio.apollographql.com'"
+        MaxAge: 31536000
   GraphqlFunction:
     Type: AWS::Serverless::Function
     Properties:

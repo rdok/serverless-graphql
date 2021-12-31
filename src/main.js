@@ -8,7 +8,7 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    hello: () => 'Hello world!',
+    hello: () => `Hello world! ${new Date}`,
   },
 };
 
@@ -28,26 +28,25 @@ const server = new ApolloServer({
 });
 
 
-exports.handler = server.createHandler({
+const serverHandler = server.createHandler({
   cors: {
     origin: '*',
     credentials: true,
+    allowedHeaders: '*'
   },
 });
 
-
-const handler = (event, lambdaContext, callback) => {
+exports.graphqlHandler = (event, lambdaContext, callback) => {
   const playgroundRequested = event.httpMethod === 'GET';
 
+  console.log('playgroundRequested', playgroundRequested);
   if (!playgroundRequested) {
-    return server.createHandler()(event, lambdaContext, callback);
+    return serverHandler(event, lambdaContext, callback);
   }
 
-  return server.createHandler()(
+  return serverHandler(
     { ...event, path: event.requestContext.path || event.path },
     lambdaContext,
     callback,
   );
 };
-
-exports.graphqlHandler = handler;
