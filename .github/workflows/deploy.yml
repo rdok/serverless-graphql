@@ -18,6 +18,7 @@ jobs:
   check:
     uses: rdok/serverless-graphql/.github/workflows/check.yml@main
   deploy:
+    needs: [ check ]
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.event.inputs.environment == '' && 'test' || github.event.inputs.environment }}
@@ -43,6 +44,12 @@ jobs:
           echo ::set-output name=name::"${NAME}"
           echo ::set-output name=stack-name::"${ORG}-${ENVIRONMENT}-${NAME}"
           echo ::set-output name=cicd-bucket::"${ORG}-${ENVIRONMENT}-cicd-${AWS_DEFAULT_REGION}"
+      - name: Enable NPM cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
       - name: Build
         run: |
           npm ci
