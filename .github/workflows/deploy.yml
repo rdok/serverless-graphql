@@ -50,12 +50,12 @@ jobs:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: ${{ runner.os }}-node-
+      - name: Install NPM packages
+        run: npm ci
+      - name: Validate template
+        run: sam validate
       - name: Build
-        run: |
-          sam validate
-          npm ci
-          npm prune --production
-          sam build
+        run: sam build
       - name: Deploy
         run: |
           sam deploy \
