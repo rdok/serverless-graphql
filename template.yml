@@ -7,7 +7,7 @@ Resources:
     Properties:
       StageName: "Prod"
       Cors:
-        AllowCredentials: true
+        AllowCredentials: True
         AllowHeaders: "'content-type'"
         AllowMethods: "'GET,OPTIONS,POST'"
         AllowOrigin: "'https://studio.apollographql.com'"
