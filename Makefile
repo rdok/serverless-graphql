@@ -4,6 +4,5 @@ start: node_modules
 test: node_modules
 	npm run test
 
-.PHONY: node_modules
 node_modules:
 	npm ci --frozen-lockfile
