@@ -8,7 +8,7 @@
         "graphql": "^16.2.0"
     },
     "devDependencies": {
-        "jest": "^24.7.1"
+        "jest": "^27.4.5"
     },
     "scripts": {
         "test": "jest"
