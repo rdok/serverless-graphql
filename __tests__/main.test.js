@@ -1,4 +1,4 @@
-const lambda = require('../../src/main.js');
+const lambda = require('../src/main.js');
 
 describe('Test graphql handler', () => {
   it('has expected structure', () => {
