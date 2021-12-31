@@ -9,9 +9,8 @@ Creates Apollo GraphQL Server through API Gateway & Lambda.
 ![Design][design]
 
 ## Develop
-`make start`. Visit http://127.0.0.1:3002/graphql
-
-See `Makefile` for additional commands.
+- `make start`. Visit http://127.0.0.1:3002/graphql
+- See `Makefile` for additional commands.
 
 [deploy_badge]: https://github.com/rdok/serverless-graphql/workflows/Deploy/badge.svg
 [deploy]: https://github.com/rdok/serverless-graphql/actions/workflows/build-deploy.yml

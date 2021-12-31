@@ -7,11 +7,11 @@ Resources:
     Properties:
       StageName: "Prod"
       Cors:
-        AllowCredentials: True
+        AllowCredentials: true
         AllowHeaders: "'content-type'"
-        AllowMethods: "'GET,OPTIONS,POST'"
-        AllowOrigin: "'https://studio.apollographql.com'"
-        MaxAge: 31536000
+        AllowMethods: "'GET, OPTIONS, POST'"
+        AllowOrigin: "'studio.apollographql.com'"
+#        MaxAge: "'31536000'"
   GraphqlFunction:
     Type: AWS::Serverless::Function
     Properties:
