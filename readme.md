@@ -1,3 +1,5 @@
+> Replaced by https://github.com/rdok/aws-sam-ts-graphql Apollo GraphQL Server template with AWS SAM, TypeScript & Lambda. Boilerplate with GitHub CI/CD actions, best security practises such as least privileges IAM policies, automated dependency updates and much more. 
+
 # Serverless GraphQL
 [![Deploy][deploy_badge]][deploy]
 [![prod-site][prod_site_badge]][prod_site]
